@@ -1,0 +1,20 @@
+Codigo:.......1   Precio:.......1.00  Marca:.......1
+Stock actual:.0   Stock minimo:.1     Descripcion:.1
+Nombre:.......1
+
+Codigo:.......2   Precio:.......2.00  Marca:.......2
+Stock actual:.1   Stock minimo:.2     Descripcion:.2
+Nombre:.......2
+
+Codigo:.......3   Precio:.......3.00  Marca:.......3
+Stock actual:.5   Stock minimo:.3     Descripcion:.3
+Nombre:.......3
+
+Codigo:.......4   Precio:.......4.00  Marca:.......4
+Stock actual:.0   Stock minimo:.4     Descripcion:.4
+Nombre:.......4
+
+Codigo:.......5   Precio:.......5.00  Marca:.......5
+Stock actual:.0   Stock minimo:.5     Descripcion:.5
+Nombre:.......5
+
