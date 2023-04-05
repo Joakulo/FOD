@@ -1,0 +1,45 @@
+1234
+Juan Perez
+250
+1234
+Juan Perez
+50
+1234
+Juan Perez
+100
+2345
+Ana Garcia
+175
+2345
+Ana Garcia
+225
+3456
+Carlos Ramirez
+300
+3456
+Carlos Ramirez
+275
+4567
+Maria Lopez
+400
+4567
+Maria Lopez
+500
+4567
+Maria Lopez
+75
+5678
+Pablo Rodriguez
+150
+5678
+Pablo Rodriguez
+200
+6789
+Laura Hernandez
+225
+6789
+Laura Hernandez
+300
+7890
+Javier Torres
+150
