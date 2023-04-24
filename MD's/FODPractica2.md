@@ -2,14 +2,11 @@
 
 <div align = "center"  id="Ejercicio_1"> 
   
-<h2 align="center"> Indice: </h2>
+Indice:
 
 | [1](#Ejercicio_1) | [2](#Ejercicio_2) | [3](#Ejercicio_3) | [4](#Ejercicio_4) | [5](#Ejercicio_5) | [6](#Ejercicio_6) | [7](#Ejercicio_7) | [8](#Ejercicio_8) | [9](#Ejercicio_9) | [10](#Ejercicio_10) | [11](#Ejercicio_11) | [12](#Ejercicio_12) | [13](#Ejercicio_13) | [14](#Ejercicio_14) | [15](#Ejercicio_15) | [16](#Ejercicio_16) | [17](#Ejercicio_17) | [18](#Ejercicio_18) |
-===
 
 </div>
-
-<br>
 
 `1.` Una empresa posee un archivo con información de los ingresos percibidos por diferentes empleados en concepto de comisión, de cada uno de ellos se conoce: código de empleado, nombre y monto de la comisión. La información del archivo se encuentra ordenada por código de empleado y cada empleado puede aparecer más de una vez en el archivo de comisiones. 
 
@@ -31,92 +28,92 @@ const
     valorAlto = 9999;
 
 type
-    cad20=string[20];
+    str20 = string[20];
     empleado = record
-        cod:integer;
-        nombre:cad20;
-        monto:real;
+        cod: integer;
+        nombre: str20;
+        monto: real;
     end;
-    archivo=file of empleado;
+    archivo = file of empleado;
 
-procedure crearArchivo(var archL:archivo; var archF:string);    //Crea el archivo que ya se tiene segun la consigna
+procedure crearArchivo(var archivoLogico:archivo; var archivoFisico:str20);    //Crea el archivo que ya se tiene segun la consigna
 var
-    carga:text;
-    e:empleado;
+    carga: text;
+    e: empleado;
 begin
-    assign(carga, 'Practica2Ejercicio1empleados.txt');          // Toma la info de este .txt
-    archF := 'Practica2Ejercicio1empleados.dat';                // Y la vuelca en este .dat
-    readln(archF);
-    assign(archL, archF);               
-    rewrite(archL);
+    assign(carga, 'empleados.txt');          // Toma la info de este .txt
+    archivoFisico := 'empleados.dat';                // Y la vuelca en este .dat
+    assign(archivoLogico, archivoFisico);               
+    rewrite(archivoLogico);
     reset(carga);
     while (not eof(carga)) do begin
         readln(carga, e.cod);
         readln(carga, e.nombre);
         readln(carga, e.monto);
-        write(archL, e);
+        write(archivoLogico, e);
     end;
     writeln('______________________________');
-    writeln('Archivo Practica2Ejercicio1empleados.dat cargado.');
-    writeln('______________________________');  close(carga);
-    close(archL);
+    writeln('Archivo empleados.dat cargado.');
+    writeln('______________________________');
+    close(carga);
+    close(archivoLogico);
 end;
 
-procedure Imprimir(var archL:archivo);
+procedure Imprimir(var archivoLogico:archivo);
 var
     e:empleado;
 begin
-    reset(archL);
-    while (not eof(archL)) do begin
-        read(archL,e);
+    reset(archivoLogico);
+    while (not eof(archivoLogico)) do begin
+        read(archivoLogico,e);
         writeln('Empleado Nro: ', e.cod);
         writeln('Nombre: ', e.nombre);
         writeln('Monto: ', e.monto:0:00);
         writeln('____________________');
     end;
-    close(archL);
+    close(archivoLogico);
 end;
 
-procedure leer(var archivo:archivo; var e:empleado);
+procedure Leer(var archivoLogico:archivo; var e:empleado);
 begin
-    if (not eof(archivo))
-        then read(archivo,e)
-        else e.cod:=valorAlto;
+    if (not eof(archivoLogico))
+        then read(archivoLogico,e)
+        else e.cod := valorAlto;
 end;
 
-procedure cargarArchivo(var archLA, archLN : archivo; var archFN: cad20);
+procedure cargarArchivo(var archivoLogicoA, archivoLogicoN:archivo; var archivoFisicoN: str20);
 var
     e, eActual:empleado;
     montoTotal:real;
 begin
-    reset(archLA);
+    reset(archivoLogicoA);
     write('Ingrese el nombre del archivo a crear: ');
-    readln(archFN);
-    assign(archLN, archFN);
-    rewrite(archLN);
-    leer(archLA, e);
+    readln(archivoFisicoN);
+    assign(archivoLogicoN, archivoFisicoN);
+    rewrite(archivoLogicoN);
+    Leer(archivoLogicoA, e);
     while (e.cod <> 9999) do begin
         montoTotal := 0;
         eActual := e;
         while (e.cod = eActual.cod) do begin
             montoTotal := montoTotal + e.monto;
-            leer(archLA, e);
+            Leer(archivoLogicoA, e);
         end;
         eActual.monto := montoTotal;
-        write(archLN, eActual);
+        write(archivoLogicoN, eActual);
     end;
     writeln();
-    Imprimir(archLN);
+    Imprimir(archivoLogicoN);
 end;
 
 var
-    archLantiguo, archLnuevo : archivo;
-    archFA, archFN : cad20;
+    archivoLogicoAntiguo, archivoLogicoNuevo: archivo;
+    archivoFisicoA, archivoFisicoN: str20;
 
 BEGIN
-    crearArchivo(archLantiguo, archFA);
-    Imprimir(archLantiguo);
-    cargarArchivo(archLantiguo, archLnuevo, archFN);
+    crearArchivo(archivoLogicoAntiguo, archivoFisicoA);
+    Imprimir(archivoLogicoAntiguo);
+    cargarArchivo(archivoLogicoAntiguo, archivoLogiconuevo, archivoFisicoN);
 END.
 
 {   Como crear una lista random de empleados con ChatGPT:
@@ -176,43 +173,44 @@ const
     valorAlto = 9999;
 
 type
-    cad20 = string[20];
+    str20 = string[20];
     alumnoMaestro = record
         cod: integer;
-        apellido: cad20;
-        nombre: cad20;
+        apellido: str20;
+        nombre: str20;
         cantM: integer;
         cantA: integer;
         cantFinal: integer;
     end;
-    archivoMaestro = file of alumnoMaestro;
         
     alumnoDetalle = record
         cod : integer;
         aprueba : char;
     end;
+
+    archivoMaestro = file of alumnoMaestro;
     archivoDetalle = file of alumnoDetalle;
 
-procedure leerMaestro(var archivo:archivoMaestro; var a:alumnoMaestro);
+procedure LeerMaestro(var archivo:archivoMaestro; var a:alumnoMaestro);
 begin
     if (not eof(archivo))
         then read(archivo,a)
         else a.cod:=valorAlto;
 end;
 
-procedure leerDetalle(var archivo:archivoDetalle; var a:alumnoDetalle);
+procedure LeerDetalle(var archivo:archivoDetalle; var a:alumnoDetalle);
 begin
     if (not eof(archivo))
         then read(archivo,a)
-        else a.cod:=valorAlto;
+        else a.cod := valorAlto;
 end;
 
-procedure ImprimirMaestro(var archL:archivoMaestro);
+procedure ImprimirMaestro(var maestro:archivoMaestro);
 var
     a:alumnoMaestro;
 begin
-    reset(archL);
-    leerMaestro(archL, a);
+    reset(maestro);
+    LeerMaestro(maestro, a);
     while (a.cod <> 9999) do begin
         writeln('----------');
         writeln('Codigo: ', a.cod);
@@ -221,17 +219,17 @@ begin
         writeln('Materias aprobadas sin final: ', a.cantA);
         writeln('Materias aprobadas con final: ', a.cantFinal);
         writeln('----------');
-        leerMaestro(archL, a);
+        LeerMaestro(maestro, a);
     end;
-    close(archL);
+    close(maestro);
 end;
 
-procedure ImprimirDetalle(var archL:archivoDetalle);
+procedure ImprimirDetalle(var detalle:archivoDetalle);
 var
     a:alumnoDetalle;
 begin
-    reset(archL);
-    leerDetalle(archL, a);
+    reset(detalle);
+    LeerDetalle(detalle, a);
     while (a.cod <> 9999) do begin
         writeln('----------');
         writeln('Codigo: ', a.cod);
@@ -239,20 +237,21 @@ begin
             then writeln('Materia aprobada sin final.')
             else writeln('Materia aprobada con final.');
         writeln('----------');
-        leerDetalle(archL, a);
+        LeerDetalle(detalle, a);
     end;
-    close(archL);
+    close(detalle);
 end;
 
-procedure crearArchivoMaestro (var archL:archivoMaestro; var archF:string);     // Crea el archivo maestro que se dispone segun la consigna
+procedure crearArchivoMaestro (var maestro:archivoMaestro);     // Crea el archivo maestro que se dispone segun la consigna
 var
     carga:text;
     a:alumnoMaestro;
+    maestroFisico:string;
 begin
     assign(carga, 'Practica2Ejercicio2alumnosMaestro.txt');     // Toma la info de este .txt
-    archF := 'Practica2Ejercicio2alumnosMaestro.dat';               // Y la vuelca en este .dat
-    assign(archL, archF);
-    rewrite(archL);
+    maestroFisico := 'Practica2Ejercicio2alumnosMaestro.dat';               // Y la vuelca en este .dat
+    assign(maestro, maestroFisico);
+    rewrite(maestro);
     reset(carga);
     while (not eof(carga)) do begin
         readln(carga, a.cod);
@@ -261,84 +260,85 @@ begin
         readln(carga, a.cantM);
         readln(carga, a.cantA);
         readln(carga, a.cantFinal);
-        write(archL, a);
+        write(maestro, a);
     end;
-    close(archL);
+    close(maestro);
     close(carga);
     writeln('___________________________________');
-    writeln('Archivo Practica2Ejercicio2alumnosMaestro.dat cargado.');
+    writeln('Archivo alumnosMaestro.dat cargado.');
     writeln('___________________________________');
-    ImprimirMaestro(archL);
+    ImprimirMaestro(maestro);
 end;
 
-procedure crearArchivoDetalle (var archL:archivoDetalle; var archF:string);
+procedure crearArchivoDetalle (var detalle:archivoDetalle);
 var
     carga:text;
     a:alumnoDetalle;
+    detalleFisico:string
 begin
     assign(carga, 'Practica2Ejercicio2alumnosDetalle.txt');     // Toma la info de este .txt
-    archF := 'Practica2Ejercicio2alumnosDetalle.dat';               // Y la vuelca en este .dat
-    assign(archL, archF);
+    detalleFisico := 'Practica2Ejercicio2alumnosDetalle.dat';               // Y la vuelca en este .dat
+    assign(detalle, detalleFisico);
     reset(carga);
-    rewrite(archL);
+    rewrite(detalle);
     while (not eof(carga)) do begin
         readln(carga, a.cod);
         readln(carga, a.aprueba);
-        write(archL, a);
+        write(detalle, a);
     end;
-    close(archL);
+    close(detalle);
     close(carga);
     writeln('___________________________________');
     writeln('Archivo alumnosDetalle.dat cargado.');
     writeln('___________________________________');
-    ImprimirDetalle(archL);
+    ImprimirDetalle(detalle);
 end;
 
-procedure actualizarMaestro(var archLM:archivoMaestro; var archLD:archivoDetalle; archFM, archFD: cad20);
+procedure actualizarMaestro (var maestro:archivoMaestro; var detalle:archivoDetalle);
 var
     cantA, cantF : integer;
-    aMaestro:alumnoMaestro;
-    aDetalle:alumnoDetalle;
+    aMaestro: alumnoMaestro;
+    aDetalle: alumnoDetalle;
 begin
-    reset(archLM);
-    reset(archLD);
-    while (not eof(archLD)) do begin                                    // Comienza a avanzar en ambos.
-        read(archLM, aMaestro);
-        read(archLD, aDetalle);
+    reset(maestro);
+    reset(detalle);
+    while (not eof(detalle)) do begin                                    // Comienza a avanzar en ambos.
+        read(maestro, aMaestro);
+        read(detalle, aDetalle);
         cantA := 0;
         cantF := 0;
         while (aMaestro.cod <> aDetalle.cod) do                         // Avanza en el maestro hasta encontrar su equivalente en el detalle.
-            read(archLM, aMaestro);
+            read(maestro, aMaestro);
             
-        while ((not eof(archLD)) and (aMaestro.cod = aDetalle.cod)) do begin        // Mientras que sean equiavlentes procesa.
+        while ((not eof(detalle)) and (aMaestro.cod = aDetalle.cod)) do begin        // Mientras que sean equiavlentes procesa.
         
             if (aDetalle.aprueba = 'A') then
                 cantA := cantA + 1
             else if (aDetalle.aprueba = 'F') then
                 cantF := cantF + 1;
-            read(archLD, aDetalle);
+            read(detalle, aDetalle);
         end;
         
         aMaestro.cantA := aMaestro.cantA + cantA;           // Actualiza los campos necesarios
         aMaestro.cantFinal := aMaestro.cantFinal + cantF;
         
-        if (not eof(archLD)) then
-            seek(archLD, filepos(archLD) - 1);
-        seek(archLM, filepos(archLM) - 1);
-        write(archLM, aMaestro);                            // Sobreescribe el maestro
+        if (not eof(detalle)) then
+            seek(detalle, filepos(detalle) - 1);
+        seek(maestro, filepos(maestro) - 1);
+        write(maestro, aMaestro);                            // Sobreescribe el maestro
     end;
 end;    
 
 
-procedure ListarAlumnos(var archL:archivoMaestro);
+procedure ListarAlumnos(var maestro:archivoMaestro);
 var
     carga:text;
     a:alumnoMaestro;
 begin
-    reset(archL);
+    reset(maestro);
     assign(carga, 'alumnosCursadasAprobadas.txt');
     rewrite(carga);
-    leerMaestro(archL, a);
+    LeerMaestro(maestro, a);
     while (a.cod <> 9999) do begin
         if (a.cantA > 3) then begin
             writeln(carga, '----------');
@@ -347,17 +347,17 @@ begin
             writeln(carga, 'Materias aprobadas sin final: ', a.cantA);
             writeln(carga, 'Materias aprobadas con final: ', a.cantFinal);
             writeln(carga, '----------');
-            leerMaestro(archL, a);
+            LeerMaestro(maestro, a);
         end;
     end;
     close(carga);
-    close(archL);
+    close(maestro);
     writeln('____________________________________________');
     writeln('Archivo alumnosCursadasAprobadas.txt cargado');
     writeln('____________________________________________');
 end;
 
-procedure Menu(var archLM:archivoMaestro; var archLD:archivoDetalle; archFM, archFD: cad20);
+procedure Menu(var maestro:archivoMaestro; var detalle:archivoDetalle);
 var
     opcion:integer;
 begin
@@ -371,23 +371,21 @@ begin
         write('Opcion: ');
         readln(opcion);
         case opcion of
-            1:actualizarMaestro(archLM, archLD, archFM, archFD);
-            2:ListarAlumnos(archLM);
+            1:actualizarMaestro(maestro, detalle);
+            2:ListarAlumnos(maestro);
             3:writeln('Archivo cerrado.');
         else end;
     end;    
 end;
 
-
 var
-    archLM:archivoMaestro;
-    archLD:archivoDetalle;
-    archFM, archFD: string;
+    maestro:archivoMaestro;
+    detalle:archivoDetalle;
 
 BEGIN
-    crearArchivoMaestro(archLM, archFM);
-    crearArchivoDetalle(archLD, archFD);
-    Menu(archLM, archLD, archFM, archFD);
+    crearArchivoMaestro(maestro);
+    crearArchivoDetalle(detalle);
+    Menu(maestro, detalle);
 END.
 ```
   
@@ -439,71 +437,71 @@ type
     vectorRegistros = array[rango] of productoD;
         
 
-procedure leerMaestro (var arch:archivoMaestro; var p:producto);
+procedure LeerMaestro (var archivo:archivoMaestro; var p:producto);
 begin
-    if (not eof(arch))
-        then read(arch, p)
+    if (not eof(archivo))
+        then read(archivo, p)
         else p.cod := valorAlto;
 end;
 
-procedure leerDetalle (var arch:archivoDetalle; var p:productoD);
+procedure LeerDetalle (var archivo:archivoDetalle; var p:productoD);
 begin
-    if (not eof(arch))
-        then read(arch, p)
+    if (not eof(archivo))
+        then read(archivo, p)
         else p.cod := valorAlto;
 end;
 
-procedure minimo (var minD:productoD; var vDetalle:vectorDetalle; var vRegistros:vectorRegistros);
+procedure minimo (var minD:productoD; var detalles:vectorDetalle; var registrosD:vectorRegistros);
 var
     i, pos:integer;
 begin
     minD.cod := valorAlto;
     for i:=1 to dimF do begin
-        if (vRegistros[i].cod < minD.cod) then begin            // Si el codigo es el menor hasta el momento actualiza minD y pos.
-            minD := vRegistros[i];
+        if (registrosD[i].cod < minD.cod) then begin            // Si el codigo es el menor hasta el momento actualiza minD y pos.
+            minD := registrosD[i];
             pos := i;
         end;
     end;
     if (minD.cod <> valorAlto) then                     // Se avanza en el detalle con codigo minimo.
-        leerDetalle(vDetalle[pos], vRegistros[pos]);            
+        LeerDetalle(detalles[pos], registrosD[pos]);            
 end;
 
-procedure actualizarMaestro(var archLM:archivoMaestro; var vDetalle:vectorDetalle; var vRegistros:vectorRegistros);
+procedure actualizarMaestro(var maestro:archivoMaestro; var detalles:vectorDetalle; var registrosD:vectorRegistros);
 var
     pMaestro: producto;
     minD: productoD;
     i:integer;
 begin
-    reset(archLM);
+    reset(maestro);
     for i:=1 to dimF do
-        reset(vDetalle[i]);
+        reset(detalles[i]);
 
-    minimo(minD, vDetalle, vRegistros);             // Busca el codigo minimo entre los productos de los detalles.
+    minimo(minD, detalles, registrosD);             // Busca el codigo minimo entre los productos de los detalles.
     while (minD.cod <> valorAlto) do begin          // Hasta que no se terminan de leer los detalles lee al maestro.
-        leerMaestro(archLM, pMaestro);                  
+        LeerMaestro(maestro, pMaestro);                  
         while (pMaestro.cod <> minD.cod) do         // Lee registros del maestro hasta encontrar uno equivalente al minimo de los detalles.
-            leerMaestro(archLM, pMaestro);          
+            LeerMaestro(maestro, pMaestro);          
         while (pMaestro.cod = minD.cod) do begin    // Mientras que los codigos sean iguales, actualiza el registro del maestro
             pMaestro.stockD := pMaestro.stockD - minD.cant;
-            minimo(minD, vDetalle, vRegistros);                 // Busca el codigo minimo entre los productos de los detalles. 
+            minimo(minD, detalles, registrosD);                 // Busca el codigo minimo entre los productos de los detalles. 
         end;
-        write(archLM, pMaestro);                    // Se actualiza el registro.
+        write(maestro, pMaestro);                    // Se actualiza el registro.
     end;
         
-    close(archLM);
+    close(maestro);
     for i:=1 to dimF do
-        close(vDetalle[i]);
+        close(detalles[i]);
 end;
 
-procedure Informartxt(var arch:archivoMaestro);
+procedure Informartxt(var maestro:archivoMaestro);
 var
     p:producto;
     carga:text;
 begin
-    reset(arch);
-    assign(carga, 'Practica2Ejercicio3productosStockMinimo.txt');
+    reset(maestro);
+    assign(carga, 'productosStockMinimo.txt');
     rewrite(carga);
-    leerMaestro(arch, p);
+    LeerMaestro(maestro, p);
     while (p.cod <> valorAlto) do begin
         if (p.stockM > p.stockD) then begin
             writeln(carga, 'Nombre: ', p.nombre);
@@ -511,23 +509,23 @@ begin
             writeln(carga, 'Stock disponible: ', p.stockD);
             writeln(carga, 'Precio: ', p.precio:0:00);
         end;
-        leerMaestro(arch, p);
+        LeerMaestro(maestro, p);
     end;
-    close(arch);
+    close(maestro);
     close(carga);
     writeln('___________________________________');
-    writeln('Archivo Practica2Ejercicio3productosStockMinimo.txt cargado.');
+    writeln('Archivo productosStockMinimo.txt cargado.');
     writeln('___________________________________');
 end;
 
-procedure crearArchivoMaestro (var arch:archivoMaestro; var archF:str20);       // Crea el archivo maestro que se dispone segun la consigna
+procedure crearArchivoMaestro (var maestro:archivoMaestro; var maestroFisico:str20);       // Crea el archivo maestro que se dispone segun la consigna
 var
     carga:text;
     p:producto;
 begin
-    assign(carga, 'Practica2Ejercicio3productos.txt');          // Toma la info de este .txt
-    archF := 'Practica2Ejercicio3productos.dat';                // Y la vuelca en este .dat
-    assign(arch, archF);
+    assign(carga, 'productos.txt');          // Toma la info de este .txt
+    maestroFisico := 'productos.dat';                // Y la vuelca en este .dat
+    assign(maestro, maestroFisico);
     rewrite(arch);
     reset(carga);
     while (not eof(carga)) do begin
@@ -537,9 +535,9 @@ begin
         readln(carga, p.stockD);
         readln(carga, p.stockM);
         readln(carga, p.precio);
-        write(arch, p);
+        write(maestro, p);
     end;
-    close(arch);
+    close(maestro);
     close(carga);
     writeln('___________________________________');
     writeln('Archivo Practica2Ejercicio3productos.dat cargado.');
@@ -547,23 +545,23 @@ begin
 end;
 
 var
-    archLM: archivoMaestro;
-    vDetalle: vectorDetalle;
-    vRegistros: vectorRegistros;
+    maestro: archivoMaestro;
+    detalles: vectorDetalle;
+    registrosD: vectorRegistros;
     i: integer;
-    archFM, iStr: str20;
+    maestroFisico, iStr: str20;
         
 BEGIN
-    crearArchivoMaestro(archLM, archFM);
+    crearArchivoMaestro(maestro, maestroFisico);
     for i:=1 to dimF do begin
         Str(i,iStr);
-        assign(vDetalle[i], 'Practica2Ejercicio3detalle'+iStr+'.dat');      // Los 30 detalles que se reciben
-        rewrite(vDetalle[i]);
-        leerDetalle(vDetalle[i], vRegistros[i]);
-        close(vDetalle[i]);
+        assign(detalles[i], 'detalle'+iStr+'.dat');      // Los 30 detalles que se reciben
+        rewrite(detalles[i]);
+        LeerDetalle(detalles[i], registrosD[i]);
+        close(detalles[i]);
     end;
-    actualizarMaestro(archLM, vDetalle, vRegistros);
-    Informartxt(archLM);
+    actualizarMaestro(maestro, detalles, registrosD);
+    Informartxt(maestro);
 END.
 ```
   
