@@ -1,5 +1,14 @@
 <h1 align="center">Practica 1</h1>
 
+<div align = "center"  id="Ejercicio_1"> 
+  
+<h2> Indice: </h2>
+
+| [1](#Ejercicio_1) | [2](#Ejercicio_2) | [3](#Ejercicio_3) | [4](#Ejercicio_4) | [5](#Ejercicio_5) | [6](#Ejercicio_6) | [7](#Ejercicio_7) |
+===
+
+</div>
+
 ```1.``` Realizar un algoritmo que cree un archivo de números enteros no ordenados y permita incorporar datos al archivo. Los números son ingresados desde teclado. El nombre del archivo debe ser proporcionado por el usuario desde teclado. La carga finaliza cuando se ingrese el número 30000, que no debe incorporarse al archivo.
 
 <details>
@@ -44,7 +53,7 @@ END.
   
 </details>
 
-<hr><br>
+<hr id="Ejercicio_2"><br>
 
 ```2.``` Realizar un algoritmo, que utilizando el archivo de números enteros no ordenados creados en el ejercicio 1, informe por pantalla cantidad de números menores a 1500 y el promedio de los números ingresados. El nombre del archivo a procesar debe ser proporcionado por el usuario una única vez. Además, el algoritmo deberá listar el contenido del archivo en pantalla.
 
@@ -101,7 +110,7 @@ END.
   
 </details>
 
-<hr><br>
+<hr id="Ejercicio_3"><br>
 
 ```3.``` Realizar un programa que presente un menú con opciones para:
 
@@ -256,7 +265,7 @@ END.
   
 </details>
 
-<hr><br>
+<hr id="Ejercicio_4"><br>
 
 ```4.``` Agregar al menú del programa del ejercicio 3, opciones para:
 
@@ -505,7 +514,7 @@ END.
   
 </details>
 
-<hr><br>
+<hr id="Ejercicio_5"><br>
 
 ```5.``` Realizar un programa para una tienda de celulares, que presente un menú con opciones para:
 
@@ -666,7 +675,7 @@ END.
   
 </details>
 
-<hr><br>
+<hr id="Ejercicio_6"><br>
 
 ```6.```  Agregar al menú del programa del ejercicio 5, opciones para:
 
@@ -911,7 +920,7 @@ END.
   
 </details>
 
-<hr><br>
+<hr id="Ejercicio_7"><br>
 
 ```7.``` Realizar un programa que permita:
 
