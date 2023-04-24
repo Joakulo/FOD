@@ -1,13 +1,21 @@
 <h1 align="center">Practica 2</h1>
 
-`1.` Una empresa posee un archivo con información de los ingresos percibidos por diferentes empleados en concepto de comisión, de cada uno de ellos se conoce: código de empleado, nombre y monto de la comisión. La información del archivo se encuentra ordenada por código de empleado y cada empleado puede aparecer más de una vez en el archivo de comisiones.
+<div align = "center"  id="Ejercicio_1"> 
+  
+Indice:
+
+| [1](#Ejercicio_1) | [2](#Ejercicio_2) | [3](#Ejercicio_3) | [4](#Ejercicio_4) | [5](#Ejercicio_5) | [6](#Ejercicio_6) | [7](#Ejercicio_7) | [8](#Ejercicio_8) | [9](#Ejercicio_9) | [10](#Ejercicio_10) | [11](#Ejercicio_11) | [12](#Ejercicio_12) | [13](#Ejercicio_13) | [14](#Ejercicio_14) | [15](#Ejercicio_15) | [16](#Ejercicio_16) | [17](#Ejercicio_17) | [18](#Ejercicio_18) |
+
+</div>
+
+`1.` Una empresa posee un archivo con información de los ingresos percibidos por diferentes empleados en concepto de comisión, de cada uno de ellos se conoce: código de empleado, nombre y monto de la comisión. La información del archivo se encuentra ordenada por código de empleado y cada empleado puede aparecer más de una vez en el archivo de comisiones. 
 
 Realice un procedimiento que reciba el archivo anteriormente descripto y lo compacte. En consecuencia, deberá generar un nuevo archivo en el cual, cada empleado aparezca una única vez con el valor total de sus comisiones.
 
 ```
 NOTA: No se conoce a priori la cantidad de empleados. Además, el archivo debe ser recorrido una única vez.
 ```
-
+  
 <details>
 
 <summary> ▶️ </summary>
@@ -135,8 +143,8 @@ Reemplaza cada "," por un salto de línea y elimina el signo "$" cada vez que ap
   
 </details>
 
-<br><hr><br>
-
+<br><hr id="Ejercicio_2"><br>
+  
 `2.` Se dispone de un archivo con información de los alumnos de la Facultad de Informática. Por cada alumno se dispone de su código de alumno, apellido, nombre, cantidad de materias (cursadas) aprobadas sin final y cantidad de materias con final aprobado. Además, se tiene un archivo detalle con el código de alumno e información correspondiente a una materia (esta información indica si aprobó la cursada o aprobó el final).
 
 Todos los archivos están ordenados por código de alumno y en el archivo detalle puede haber 0, 1 ó más registros por cada alumno del archivo maestro. Se pide realizar un programa con opciones para:
@@ -152,7 +160,7 @@ Todos los archivos están ordenados por código de alumno y en el archivo detall
 ```
 NOTA: Para la actualización del inciso a) los archivos deben ser recorridos sólo una vez.
 ```
-
+  
 <details>
 
 <summary> ▶️ </summary>
@@ -382,7 +390,7 @@ END.
   
 </details>
 
-<br><hr><br>
+<br><hr id="Ejercicio_3"><br>
 
 `3.` Se cuenta con un archivo de productos de una cadena de venta de alimentos congelados. De cada producto se almacena: código del producto, nombre, descripción, stock disponible, stock mínimo y precio del producto.
 
@@ -558,8 +566,8 @@ END.
   
 </details>
 
-<br><hr><br>
-
+<br><hr id="Ejercicio_4"><br>
+  
 `4.` Suponga que trabaja en una oficina donde está montada una LAN (red local). La misma fue construida sobre una topología de red que conecta 5 máquinas entre sí y todas las máquinas se conectan con un servidor central. Semanalmente cada máquina genera un archivo de logs informando las sesiones abiertas por cada usuario en cada terminal y por cuánto tiempo estuvo abierta. Cada archivo detalle contiene los siguientes campos: cod_usuario, fecha, tiempo_sesion. Debe realizar un procedimiento que reciba los archivos detalle y genere un archivo maestro con los siguientes datos: cod_usuario, fecha, tiempo_total_de_sesiones_abiertas.
 
 ```
@@ -719,8 +727,8 @@ END.
   
 </details>
 
-<br><hr><br>
-
+<br><hr id="Ejercicio_5"><br>
+  
 `5.` A partir de un siniestro ocurrido se perdieron las actas de nacimiento y fallecimientos de toda la provincia de buenos aires de los últimos diez años. En pos de recuperar dicha información, se deberá procesar 2 archivos por cada una de las 50 delegaciones distribuidas en la provincia, un archivo de nacimientos y otro de fallecimientos y crear el archivo maestro reuniendo dicha información.
 
 Los archivos detalles con nacimientos, contendrán la siguiente información: nro partida nacimiento, nombre, apellido, dirección detallada (calle,nro, piso, depto, ciudad), matrícula del médico, nombre y apellido de la madre, DNI madre, nombre y apellido del padre, DNI del padre.
@@ -967,8 +975,8 @@ END.
   
 </details>
 
-<br><hr><br>
-
+<br><hr id="Ejercicio_6"><br>
+  
 `6.` Se desea modelar la información necesaria para un sistema de recuentos de casos de covid para el ministerio de salud de la provincia de buenos aires.
 
 Diariamente se reciben archivos provenientes de los distintos municipios, la información contenida en los mismos es la siguiente: código de localidad, código cepa, cantidad casosactivos, cantidad de casos nuevos, cantidad de casos recuperados, cantidad de casos fallecidos.
@@ -1123,9 +1131,9 @@ END.
   
 </details>
 
-<br><hr><br>
-
-`7-` El encargado de ventas de un negocio de productos de limpieza desea administrar el stock de los productos que vende. Para ello, genera un archivo maestro donde figuran todos los productos que comercializa. De cada producto se maneja la siguiente información: código de producto, nombre comercial, precio de venta, stock actual y stock mínimo. 
+<br><hr id="Ejercicio_7"><br>
+  
+`7.` El encargado de ventas de un negocio de productos de limpieza desea administrar el stock de los productos que vende. Para ello, genera un archivo maestro donde figuran todos los productos que comercializa. De cada producto se maneja la siguiente información: código de producto, nombre comercial, precio de venta, stock actual y stock mínimo. 
 
 Diariamente se genera un archivo detalle donde se registran todas las ventas de productos realizadas. De cada venta se registran: código de producto y cantidad de unidades vendidas.
 
@@ -1241,8 +1249,8 @@ END.
   
 </details>
 
-<br><hr><br>
-
+<br><hr id="Ejercicio_8"><br>
+  
 `8.` Se cuenta con un archivo que posee información de las ventas que realiza una empresa a los diferentes clientes. Se necesita obtener un reporte con las ventas organizadas por cliente. Para ello, se deberá informar por pantalla: los datos personales del cliente, el total mensual (mes por mes cuánto compró) y finalmente el monto total comprado en el año por el cliente.
 
 Además, al finalizar el reporte, se debe informar el monto total de ventas obtenido por la empresa.
@@ -1336,8 +1344,8 @@ END.
   
 </details>
 
-<br><hr><br>
-
+<br><hr id="Ejercicio_9"><br>
+  
 `9.` Se necesita contabilizar los votos de las diferentes mesas electorales registradas por provincia y localidad. Para ello, se posee un archivo con la siguiente información: código de provincia, código de localidad, número de mesa y cantidad de votos en dicha mesa. 
 
 Presentar en pantalla un listado como se muestra a continuación:
@@ -1433,8 +1441,8 @@ END.
   
 </details>
 
-<br><hr><br>
-
+<br><hr id="Ejercicio_10"><br>
+ 
 `10.` Se tiene información en un archivo de las horas extras realizadas por los empleados de una empresa en un mes. Para cada empleado se tiene la siguiente información: departamento, división, número de empleado, categoría y cantidad de horas extras realizadas por el empleado. Se sabe que el archivo se encuentra ordenado por departamento, luego por división, y por último, por número de empleados. Presentar en pantalla un listado con el siguiente formato:
 
 ```
@@ -1560,8 +1568,8 @@ END.
   
 </details>
 
-<br><hr><br>
-
+<br><hr id="Ejercicio_11"><br>
+  
 `11.` A partir de información sobre la alfabetización en la Argentina, se necesita actualizar un archivo que contiene los siguientes datos: nombre de provincia, cantidad de personas alfabetizadas y total de encuestados. Se reciben dos archivos detalle provenientes de dos agencias de censo diferentes, dichos archivos contienen: nombre de la provincia, código de localidad, cantidad de alfabetizados y cantidad de encuestados. Se pide realizar los módulos necesarios para actualizar el archivo maestro a partir de los dos archivos detalle.
 
 ```
@@ -1669,8 +1677,8 @@ END.
   
 </details>
 
-<br><hr><br>
-
+<br><hr id="Ejercicio_12"><br>
+  
 `12.` La empresa de software ‘X’ posee un servidor web donde se encuentra alojado el sitio de la organización. En dicho servidor, se almacenan en un archivo todos los accesos que se realizan al sitio.
 
 La información que se almacena en el archivo es la siguiente: año, mes, dia, idUsuario y tiempo de acceso al sitio de la organización. El archivo se encuentra ordenado por los siguientes criterios: año, mes, dia e idUsuario.
@@ -1828,8 +1836,8 @@ END.
   
 </details>
 
-<br><hr><br>
-
+<br><hr id="Ejercicio_13"><br>
+  
 `13.` Suponga que usted es administrador de un servidor de correo electrónico. En los logs del mismo (información guardada acerca de los movimientos que ocurren en el server) que se encuentra en la siguiente ruta: /var/log/logmail.dat se guarda la siguiente información: nro_usuario, nombreUsuario, nombre, apellido, cantidadMailEnviados. Diariamente el servidor de correo genera un archivo con la siguiente información: nro_usuario, cuentaDestino, cuerpoMensaje. Este archivo representa todos los correos enviados por los usuarios en un día determinado. Ambos archivos están ordenados por nro_usuario y se sabe que un usuario puede enviar cero, uno o más mails por día.
 
 ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ `a-` Realice el procedimiento necesario para actualizar la información del log en un día particular. Defina las estructuras de datos que utilice su procedimiento.
@@ -1980,7 +1988,7 @@ END.
   
 </details>
 
-<br><hr><br>
+<br><hr id="Ejercicio_14"><br>
 
 `14.` Una compañía aérea dispone de un archivo maestro donde guarda información sobre sus próximos vuelos. En dicho archivo se tiene almacenado el destino, fecha, hora de salida y la cantidad de asientos disponibles. La empresa recibe todos los días dos archivos detalles para actualizar el archivo maestro. En dichos archivos se tiene destino, fecha, hora de salida y cantidad de asientos comprados. Se sabe que los archivos están ordenados por destino más fecha y hora de salida, y que en los detalles pueden venir 0, 1 ó más registros por cada uno del maestro. Se pide realizar los módulos necesarios para:
 
@@ -2151,7 +2159,7 @@ END.
   
 </details>
 
-<br><hr><br>
+<br><hr id="Ejercicio_15"><br>
 
 `15.` Se desea modelar la información de una ONG dedicada a la asistencia de personas con carencias habitacionales. La ONG cuenta con un archivo maestro conteniendo información como se indica a continuación: Código pcia, nombre provincia, código de localidad, nombre de localidad, #viviendas sin luz, #viviendas sin gas, #viviendas de chapa, #viviendas sin agua,# viviendas sin sanitarios.
  
@@ -2312,7 +2320,7 @@ END.
   
 </details>
 
-<br><hr><br>
+<br><hr id="Ejercicio_16"><br>
 
 `16.` La editorial X, autora de diversos semanarios, posee un archivo maestro con la información correspondiente a las diferentes emisiones de los mismos. De cada emisión se registra: fecha, código de semanario, nombre del semanario, descripción, precio, total de ejemplares y total de ejemplares vendido.
 
@@ -2486,8 +2494,8 @@ END.
   
 </details>
 
-<br><hr><br>
-
+<br><hr id="Ejercicio_17"><br>
+  
 `17.` Una concesionaria de motos de la Ciudad de Chascomús, posee un archivo con información de las motos que posee a la venta. De cada moto se registra: código, nombre, descripción, modelo, marca y stock actual. Mensualmente se reciben 10 archivos detalles con información de las ventas de cada uno de los 10 empleados que trabajan. De cada archivo detalle se dispone de la siguiente información: código de moto, precio y fecha de la venta. Se debe realizar un proceso que actualice el stock del archivo maestro desde los archivos detalles. Además se debe informar cuál fue la moto más vendida.
 
 ```
@@ -2641,8 +2649,8 @@ END.
   
 </details>
 
-<br><hr><br>
-
+<br><hr id="Ejercicio_18"><br>
+  
 `18 .` Se cuenta con un archivo con información de los casos de COVID-19 registrados en los diferentes hospitales de la Provincia de Buenos Aires cada día. Dicho archivo contiene: cod_localidad, nombre_localidad, cod_municipio, nombre_minucipio, cod_hospital, nombre_hospital, fecha y cantidad de casos positivos detectados.
 
 El archivo está ordenado por localidad, luego por municipio y luego por hospital.
