@@ -533,7 +533,10 @@ END.
 ```
 NOTA 1: El nombre del archivo binario de celulares debe ser proporcionado por el usuario.
 
-NOTA 2: El archivo de carga debe editarse de manera que cada celular se especifique en tres líneas consecutivas: en la primera se especifica: código de celular, el precio y marca, en la segunda el stock disponible, stock mínimo y la descripción y en la tercera nombre en ese orden. Cada celular se carga leyendo tres líneas del archivo “celulares.txt”.
+NOTA 2: El archivo de carga debe editarse de manera que cada celular se especifique en tres 
+	líneas consecutivas: en la primera se especifica: código de celular, el precio y marca,
+	en la segunda el stock disponible, stock mínimo y la descripción y en la tercera nombre
+	en ese orden. Cada celular se carga leyendo tres líneas del archivo “celulares.txt”.
 ```
 
 <details>
@@ -937,7 +940,11 @@ END.
 ‎ ‎ ‎ ‎ ‎ ‎ ‎```b.``` Abrir el archivo binario y permitir la actualización del mismo. Se debe poder agregar una novela y modificar una existente. Las búsquedas se realizan por código de novela.
 
 ```
-NOTA: La información en el archivo de texto consiste en: código de novela, nombre, género y precio de diferentes novelas argentinas. De cada novela se almacena la información en dos líneas en el archivo de texto. La primera línea contendrá la siguiente información: código novela, precio, y género, y la segunda línea almacenará el nombre de la novela.
+NOTA: La información en el archivo de texto consiste en: código de novela, nombre,
+	género y precio de diferentes novelas argentinas. De cada novela se almacena
+	la información en dos líneas en el archivo de texto. La primera línea contendrá
+	la siguiente información: código novela, precio, y género, y la segunda línea
+	almacenará el nombre de la novela.
 ```
 
 <details>
