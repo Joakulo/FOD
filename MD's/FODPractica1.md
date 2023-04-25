@@ -123,7 +123,9 @@ END.
 
 ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ```iii.``` Listar en pantalla empleados mayores de 70 años, próximos a jubilarse.
 
-***NOTA***: El nombre del archivo a crear o utilizar debe ser proporcionado por el usuario.
+```
+NOTA El nombre del archivo a crear o utilizar debe ser proporcionado por el usuario.
+```
 
 <details>
 
@@ -277,7 +279,9 @@ END.
 
 ‎ ‎ ‎ ‎ ‎ ‎ ‎```d.``` Exportar a un archivo de texto llamado: “faltaDNIEmpleado.txt”, los empleados que no tengan cargado el DNI (DNI en 00).
 
-***NOTA***: Las búsquedas deben realizarse por número de empleado
+```
+NOTA: Las búsquedas deben realizarse por número de empleado
+```
 
 <details>
 
@@ -526,9 +530,11 @@ END.
 
 ‎ ‎ ‎ ‎ ‎ ‎ ‎```d.``` Exportar el archivo creado en el inciso a) a un archivo de texto denominado “celulares.txt” con todos los celulares del mismo. El archivo de texto generado podría ser utilizado en un futuro como archivo de carga (ver inciso a), por lo que debería respetar el formato dado para este tipo de archivos en la NOTA 2.
 
-***NOTA 1***: El nombre del archivo binario de celulares debe ser proporcionado por el usuario.
+```
+NOTA 1: El nombre del archivo binario de celulares debe ser proporcionado por el usuario.
 
-***NOTA 2***: El archivo de carga debe editarse de manera que cada celular se especifique en tres líneas consecutivas: en la primera se especifica: código de celular, el precio y marca, en la segunda el stock disponible, stock mínimo y la descripción y en la tercera nombre en ese orden. Cada celular se carga leyendo tres líneas del archivo “celulares.txt”
+NOTA 2: El archivo de carga debe editarse de manera que cada celular se especifique en tres líneas consecutivas: en la primera se especifica: código de celular, el precio y marca, en la segunda el stock disponible, stock mínimo y la descripción y en la tercera nombre en ese orden. Cada celular se carga leyendo tres líneas del archivo “celulares.txt”.
+```
 
 <details>
 
@@ -685,7 +691,9 @@ END.
 
 ‎ ‎ ‎ ‎ ‎ ‎ ‎```c.``` Exportar el contenido del archivo binario a un archivo de texto denominado: ”SinStock.txt”, con aquellos celulares que tengan stock 0.
 
-***NOTA***: Las búsquedas deben realizarse por nombre de celular.
+```
+NOTA: Las búsquedas deben realizarse por nombre de celular.
+```
 
 <details>
 
@@ -928,7 +936,9 @@ END.
 
 ‎ ‎ ‎ ‎ ‎ ‎ ‎```b.``` Abrir el archivo binario y permitir la actualización del mismo. Se debe poder agregar una novela y modificar una existente. Las búsquedas se realizan por código de novela.
 
-***NOTA***: La información en el archivo de texto consiste en: código de novela, nombre, género y precio de diferentes novelas argentinas. De cada novela se almacena la información en dos líneas en el archivo de texto. La primera línea contendrá la siguiente información: código novela, precio, y género, y la segunda línea almacenará el nombre de la novela.
+```
+NOTA: La información en el archivo de texto consiste en: código de novela, nombre, género y precio de diferentes novelas argentinas. De cada novela se almacena la información en dos líneas en el archivo de texto. La primera línea contendrá la siguiente información: código novela, precio, y género, y la segunda línea almacenará el nombre de la novela.
+```
 
 <details>
 
