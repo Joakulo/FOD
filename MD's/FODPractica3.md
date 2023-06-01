@@ -483,27 +483,9 @@ begin
     reset(archivo);
     LeerNovela(n);
     Leer(archivo, act);
-        
-    if (aux.codigo = 0) then begin
-        seek(archivo, FileSize(archivo) -1);
-        write(archivo,n);
-    end else begin
-        while (act.codigo <> 0) do begin        
-        //Mientras que el codigo del registro actual no llegue a 0,
-        //quiere decir que no encontre el ultimo espacio libre.
-        
-            ant := act;                         //Guardo el actual en una variable auxiliar,
-            posAnt := FilePos(archivo) -1;      //guardo su posicion.
-            seek(archivo, (act.codigo * (-1)));     //Me dirijo hacia el proximo espacio libre,
-            Leer(archivo, act);                     //lo leo.
-        end;
-        seek(archivo, FilePos(archivo) -1);     //Cuando encontre el registro con codigo = 0,
-        write(archivo, n);                      //escribo la nueva novela ahí.  
-        
-        ant.codigo := 0;            //Actualizo el anterior espacio libre, marcando que ahora es el ultimo,
-        seek(archivo, posAnt);      //voy hacia su posicion,
-        write(archivo, ant);        //lo escribo.
-    end;
+    
+    //a corregir
+    
     close(archivo);
 end;
 
