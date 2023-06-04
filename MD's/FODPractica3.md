@@ -468,7 +468,7 @@ begin
     write(aLogico, n);
         
     LeerNovela(n);
-    while (n.codigo) do begin
+    while (n.codigo < 1) do begin
         write(aLogico, n);
         LeerNovela(n);
     end;
@@ -477,15 +477,23 @@ end;
 
 procedure agregarNovela(var archivo:maestro);
 var
-    n, act, ant:novela;
-    posAnt: integer;
+    n, cabecera:novela;
 begin
     reset(archivo);
     LeerNovela(n);
-    Leer(archivo, act);
-    
-    //a corregir
-    
+    Leer(archivo, cabecera);
+        
+    if (cabecera.codigo = 0) then begin     //Si no hay espacio libre, agrego al final
+        seek(archivo, FileSize(archivo));
+        write(archivo,n);
+    end else begin
+        seek(archivo, (cabecera.codigo * (-1)));
+        read(archivo, cabecera);
+        seek(archivo, FilePos(archivo) -1);
+        write(archivo, n);
+        seek(archivo, 0);
+        write(archivo, cabecera);
+    end;
     close(archivo);
 end;
 
@@ -541,17 +549,17 @@ begin
     end;
         
     Leer(archivo, n);   //Guardo el primer registro.
-    while ((not eof(archivo)) and (act.codigo <> cod)) do
+    while ((act.codigo <> valorAlto) and (act.codigo <> cod)) do
         Leer(archivo, act);
         
     if (act.codigo <> valorAlto) then begin
         
-        posE := FilePos(archivo) -1;
+        posE := FilePos(archivo) -1;    //Posicion de la baja
         seek(archivo, posE);    //Sobreescribo el eliminado con el registro de cabecera,
         write(archivo, n);      //que tiene la posicion del eliminado anteriormente (o el 0).
         
         seek(archivo, 0);
-        n.codigo := posE;       //Actualizo la posicion del ultimo eliminado,
+        n.codigo := posE * (-1);        //Actualizo la posicion del ultimo eliminado,
         write(archivo, n);      //lo escribo en la cabecera
         
     end else
