@@ -685,6 +685,70 @@ procedure agregarFlor (var a: tArchFlores ; nombre: string; codigo:integer);
 <br>
   
 ```Pas
+program Practica3Ejercicio4;
+
+const
+    valorAlto = 9999;
+
+type
+    reg_flor = record
+        nombre: string[45];
+        codigo: integer;
+    end;
+    tArchFlores = file of reg_flor;
+
+procedure Leer(var a:tArchFlores; var flor:reg_flor);
+begin
+    if (not eof(a))
+        then read(a,flor)
+        else flor.codigo := valorAlto;
+end;
+
+procedure agregarFlor (var a:tArchFlores; nombre:string; codigo:integer);
+var
+    cabecera, flor: reg_flor;
+begin
+    reset(a);
+    Leer(a, cabecera);
+    flor.nombre := nombre;
+    flor.codigo := codigo;
+        
+    if (cabecera.codigo = 0) then begin
+        seek(a, filesize(a));
+        write(a,flor);
+    end else begin
+        seek(a, (cabecera.codigo * (-1)));
+        read(a, cabecera);
+        seek(a, filepos(a) -1);
+        write(a, flor);
+        seek(a, 0);
+        write(a, cabecera);
+    end;
+        
+    close(a);
+end;
+
+procedure Listar (var a:tArchFlores);
+var
+    flor: reg_flor;
+begin
+    reset(a);
+    Leer(a, flor);
+    while (flor.codigo <> valorAlto) do begin
+        if (flor.codigo > 0) then begin
+            writeln('Nombre: ', flor.nombre);
+            writeln('Codigo: ', flor.codigo);
+            writeln();
+        end;
+        Leer(a, flor);
+    end;
+end;
+
+
+BEGIN
+        
+        
+END.
 ```
   
 </details>
@@ -706,6 +770,96 @@ procedure eliminarFlor (var a: tArchFlores; flor:reg_flor);
 <br>
   
 ```Pas
+  program Practica3Ejercicio5;
+
+const
+    valorAlto = 9999;
+
+type
+    reg_flor = record
+        nombre: string[45];
+        codigo: integer;
+    end;
+    tArchFlores = file of reg_flor;
+
+procedure Leer(var a:tArchFlores; var flor:reg_flor);
+begin
+    if (not eof(a))
+        then read(a,flor)
+        else flor.codigo := valorAlto;
+end;
+
+procedure agregarFlor (var a:tArchFlores; nombre:string; codigo:integer);
+var
+    cabecera, flor: reg_flor;
+begin
+    reset(a);
+    Leer(a, cabecera);
+    flor.nombre := nombre;
+    flor.codigo := codigo;
+        
+    if (cabecera.codigo = 0) then begin
+        seek(a, filesize(a));
+        write(a,flor);
+    end else begin
+        seek(a, (cabecera.codigo * (-1)));
+        read(a, cabecera);
+        seek(a, filepos(a) -1);
+        write(a, flor);
+        seek(a, 0);
+        write(a, cabecera);
+    end;
+        
+    close(a);
+end;
+
+procedure Listar (var a:tArchFlores);
+var
+    flor: reg_flor;
+begin
+    reset(a);
+    Leer(a, flor);
+    while (flor.codigo <> valorAlto) do begin
+        if (flor.codigo > 0) then begin
+            writeln('Nombre: ', flor.nombre);
+            writeln('Codigo: ', flor.codigo);
+            writeln();
+        end;
+        Leer(a, flor);
+    end;
+end;
+
+procedure eliminarFlor (var a:tArchFlores; flor:reg_flor);
+var
+    cabecera, act: reg_flor;
+    pos:integer;
+begin
+    reset(a);
+    Leer(a, act);
+    cabecera := act;        //Guardo la cabecera
+        
+    while ((act.codigo <> flor.codigo) and (act.codigo <> valorAlto)) do begin
+        Leer(a, act);
+    end;
+        
+    if (act.codigo <> valorAlto) then begin
+        pos := filepos(a)-1;
+        seek(a, pos);
+        write(a, cabecera);
+        
+        seek(a, 0);
+        act.codigo := pos * (-1);
+        write(a, act);
+    end else
+        writeln('Flor no encontrada');
+    close(a);
+end;
+
+
+BEGIN
+        
+        
+END.
 ```
   
 </details>
