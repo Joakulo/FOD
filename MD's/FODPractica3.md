@@ -876,6 +876,112 @@ Por último, una vez finalizadas las bajas lógicas, deberá efectivizar las mis
 <br>
   
 ```Pas
+program Practica3Ejercicio6;
+
+const
+    valorAlto = 9999;
+    cad25 = string[25];
+
+type
+    prenda = record
+        cod_prenda: integer;
+        descripcion: cad25;
+        colores: cad25;
+        tipo_prenda: cad25;
+        stock: integer;
+        precio_unitario: real;
+    end;
+        
+    maestro = file of prenda;
+    detalle = file of integer;
+
+procedure LeerMaestro(var a:maestro; var p:prenda);
+begin
+    if (not eof(a))
+        then read(a, p)
+        else p.cod_prenda := valorAlto;
+end;
+
+procedure LeerDetalle(var a:detalle; var i:integer);
+begin
+    if (not eof(a))
+        then read(a, i);
+        else i := valorAlto;
+end;
+
+procedure BajaLogica (var m:maestro; var d:detalle);
+var
+    prenda: prenda;
+    codigo: integer;
+    escribio: boolean;
+begin
+    reset(m);
+    reset(d);
+    escribio := false;
+    LeerDetalle(d, codigo);
+        
+    while (codigo <> valorAlto) do begin
+        seek(m, 0);
+        LeerMaestro(m, prenda);     //Leo desde la primer posicion
+        
+        while ((prenda.cod_prenda <> valorAlto) and (not escribio)) do begin
+        
+            if (prenda.cod_prenda = codigo) then begin
+                prenda.cod_prenda := prenda.cod_prenda * (-1);
+                seek(m, filepos(m)-1);
+                write(m, prenda);
+                escribio := true;
+            end;
+            LeerMaestro(m, prenda);
+            
+        end;
+        LeerDetalle(d, codigo);
+    end;
+        
+    close(m);
+    close(d);
+end;
+
+procedure Compactar (var m:maestro);
+var
+    p: prenda;
+    pos: integer;
+    nuevoNombre: cad25;
+begin
+    reset(m);
+    LeerMaestro(m, p);
+    while (p <> valorAlto) do begin
+        if (p.codigo < 0) then begin
+            pos := filepos(m)-1;        //Guardo la pos de la baja logica
+            
+            seek(m, filesize(m)-1);     //Me dirijo hacia el ultimo registro
+            LeerMaestro(m, p);          //Lo copio
+            
+            seek(m, filesize(m)-2);     //Retrocedo hacia el penultimo registro
+            Truncate(m);                //Trunco el archivo desde ahí
+            
+            seek(m, pos);               //Vuelvo a la posicion del eliminado
+            write(m, p);                //Pego el ultimo registro
+        end;
+        seek(m, filepos(m) -1);         //Vuelvo a leer el ultimo para chequearlo
+        LeerMaestro(m, p);
+    end;
+    close(m);
+    write('Ingrese el nuevo nombre del archivo: ');
+    readln(nuevoNombre);
+    Rename('maestro.dat', nuevoNombre);
+end;
+
+var
+    m:maestro;
+    d:detalle;
+
+BEGIN
+    assign(m, 'maestro.dat');
+    assign(d, 'detalle.dat');
+    BajaLogica(m, d);
+    Compactar(m);
+END.
 ```
   
 </details>
