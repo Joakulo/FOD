@@ -8,4 +8,4 @@ Practicas 2023
   - [Practica 3](/MD's/FODPractica3.md)
   - [Practica 4](/Practica/Practica4)
   - [Practica 5](/Practica/Practica5)
-  - [Parciales](/Practica/Parciales)
+  - [Parciales](/Parciales)
